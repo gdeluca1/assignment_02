@@ -175,6 +175,10 @@ class TestAssignmentTwo_Strings(unittest.TestCase):
 
         leet = str.maketrans('abegiloprstz', '463611092572')
         s = 'The quick brown fox jumped over the lazy dog.'
+
+        # GENNARO: I am assuming that this was a bug, and that the intention was to change s,
+        # as per the comment. If not, the correct value for truth would be the original value of
+        # s, since s would never have been changed.
         s = s.translate(leet)  # Translate the string here
         
         truth = 'Th3 qu1ck 620wn f0x jum93d 0v32 7h3 142y d06.'  # Truth is the newly translated string
@@ -182,11 +186,20 @@ class TestAssignmentTwo_Strings(unittest.TestCase):
         self.assertEqual(truth, s)
 
     def test_write_your_own(self):
+        # GENNARO: This test demonstrates that None is actually an object of a class,
+        # as opposed to values such as true or false, which are basic values of
+        # a primitive, namely bool.
         """
         Write your own test here demonstrating either string
         or None usage that has not been demonstrated above.
         """
-        self.assertTrue(False)  # You can either fix this line or remove it once the test is in.
+        noneType = type(None)
+        # GENNARO: We cannot compare a type object to a string, so we will get the __name__
+        # value which is a string representation of the class name.
+        noneTypeString = noneType.__name__
+
+        truth = 'NoneType'
+        self.assertTrue(noneTypeString == truth)  # You can either fix this line or remove it once the test is in.
 
     def tearDown(self):
         pass
